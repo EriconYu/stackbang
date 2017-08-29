@@ -1,0 +1,153 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Welcome to aLog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/common/jquery-2.1.4.js"></script>
+<link rel="stylesheet" href="/common/bootstrap-3.3.4/docs/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/common/bootstrap-3.3.4/docs/dist/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/common/bootstrap-3.3.4/docs/dist/css/bootstrap-markdown.min.css">
+<script src="/common/bootstrap-3.3.4/docs/dist/js/bootstrap.js"></script>
+<script src="/common/bootstrap-3.3.4/docs/dist/js/markdown.min.js"></script>
+<script src="/common/bootstrap-3.3.4/docs/dist/js/bootstrap-markdown.js"></script>
+<script src="/common/bootstrap-3.3.4/docs/dist/js/bootstrap-markdown.zh.js"></script>
+
+
+</head>
+
+<body >
+	<div class="container">
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav navbar-nav navbar-right ">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">欢迎登录 {{.UserNameHTML}}<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<li><a href="/logout" >退出登录</a></li>
+					</ul>
+			</li>
+		</ul>
+	</div>
+
+	<div class="container">
+		<br>
+		<div class="row">
+			<div class="col-lg-6 col-md-offset-3">
+				<div class="input-group">
+					<input id="search_data" type="text" class="form-control" onkeydown="if(event.keyCode==13) onSearch();" autofocus>
+					<div class="input-group-btn">
+						<button id="search_tag" type="button" class="btn btn-default" tabindex="-1" onclick="onSearch()">百度</button>
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1 " style="height:34px">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right" role="menu">
+							<li><a href="#" onclick="setBaidu()">百度</a></li>
+							<li><a href="#" onclick="setGoogle()">谷歌</a></li>
+							<li><a href="#" onclick="setBing()">必应</a></li>
+						</ul>
+					</div>
+				</div><!-- /.input-group -->
+			</div>
+		</div>
+		<br>
+	</div>
+
+	<div class="container">		
+		<form action="/writeblog" method="post">
+			<input name="title" type="text" placeholder="请输入文章题目" class="form-control" required >
+			<textarea name="content" data-provide="markdown" rows="18" required ></textarea>
+			<input name="keyword" type="text" placeholder="请输入关键字，多个关键字以分号隔开。" class="form-control" required>
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="input-group">
+							<div class="input-group-btn">
+								<button id="classify_tag" type="button" class="btn btn-default" tabindex="-1" onclick="onChangeClassify()">技&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;术</button>
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1 " style="height:34px">
+									<span class="caret"></span>
+									<span class="sr-only">Toggle Dropdown</span>
+								</button>
+								<br>
+								<ul class="dropdown-menu dropdown-menu-left" role="menu">
+									<li><a onclick="setJishu()">技&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;术</a></li>
+									<li><a onclick="setLiuyao()">六&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;爻</a></li>
+									<li><a onclick="setZiwei()">紫微斗数</a></li>
+								</ul>
+							</div>
+						</div><!-- /.input-group -->
+					</div>
+				</div>
+				<br>
+			<button type="submit" class="btn btn-primary">提交</button>
+		</form>
+    </div>
+
+	<script type="text/javascript">
+		var searchWeb = 0;
+		function onSearch(){
+			switch(searchWeb){
+				default:
+				case 0:
+					var baidu_url="http://www.baidu.com/s?wd=" + $('#search_data').val();
+					window.open(baidu_url);
+					break;
+				case 1:
+					var google_url="https://www.google.com.hk/search?q=" + $('#search_data').val();
+					window.open(google_url);
+					break;
+				case 2:
+					var bing_url="http://cn.bing.com/search?q=" + $('#search_data').val();
+					window.open(bing_url);
+					break;
+			
+			}
+		}
+		function setBaidu(){
+			searchWeb = 0;
+			$('#search_tag').html("百度");
+		}
+		function setGoogle(){
+			searchWeb = 1;
+			$('#search_tag').html("谷歌");
+		}
+		function setBing(){
+			searchWeb = 2;
+			$('#search_tag').html("必应");
+		}
+	</script>
+
+	<script type="text/javascript">
+		var classifyFlag = 0;
+		function onChangeClassify(){
+			switch(classifyFlag){
+				default:
+				case 0:
+					var jishu_url="/#####" + $('#classify_data').val();
+					window.open(jishu_url);
+					break;
+				case 1:
+					var liuyao_url="/#####" + $('#classify_data').val();
+					window.open(liuyao_url);
+					break;
+				case 2:
+					var ziwei_url="/#####" + $('#classify_data').val();
+					window.open(ziwei_url);
+					break;
+			
+			}
+		}
+		function setJishu(){
+			classifyFlag = 0;
+			$('#classify_tag').html("技&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;术");
+		}
+		function setLiuyao(){
+			classifyFlag = 1;
+			$('#classify_tag').html("六&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;爻");
+		}
+		function setZiwei(){
+			classifyFlag = 2;
+			$('#classify_tag').html("紫微斗数");
+		}
+	</script>
+
+
+</body>
+</html>

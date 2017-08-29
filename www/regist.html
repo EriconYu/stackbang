@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Welcome to StackBang!!!</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+	<script src="../common/jquery-2.1.4.js"></script>
+	<link rel="stylesheet" href="../common/bootstrap-3.3.4/docs/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="../common/bootstrap-3.3.4/docs/dist/css/bootstrap-theme.css">
+	<script src="../common/bootstrap-3.3.4/docs/dist/js/bootstrap.js"></script>
+
+    <script>
+    function validateForm () {
+        var p1 = document.forms["form-signin"]["inputPassword"]
+        var p2 = document.forms["form-signin"]["inputConfirmPassword"]
+        if p1 == p2 {
+            return true
+        }else {
+            return false
+        }
+    }
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="container" style="padding:10px 300px 300px;"> 
+
+    <form class="form-signin" method="post" action="/regist/" onsubmit="return validateForm();">
+        <h2 class="form-signin-heading" style="text-align:center" >注欢迎注册StackBang！</h2>
+        用户名:
+        <label for="inputName" class="sr-only">Name</label>
+        <input type="text" id="inputName" name="inputName" class="form-control" placeholder="用户名" required>
+        <br>
+        邮箱:
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="邮箱" required>
+        <br>
+        密码:
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="密码" required>
+        <br>
+        确认密码:
+        <label for="inputConfirmPassword" class="sr-only">ConfirmPassword</label>
+        <input type="password" id="inputConfirmPassword" name="inputConfirmPassword" class="form-control" placeholder="确认密码" required>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+	</form>
+	<br>
+	<form action="/login" method="get" >
+	  	<button class="btn btn-lg btn-primary btn-block" type="submit" >已有账号去登录</button>
+	</form>
+
+    </div> 
+
+
+
+
+
+  </body>
+</html>

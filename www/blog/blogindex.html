@@ -1,0 +1,96 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Welcome to StackBang!!!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/common/jquery-2.1.4.js"></script>
+<link rel="stylesheet" href="/common/bootstrap-3.3.4/docs/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/common/bootstrap-3.3.4/docs/dist/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/common/bootstrap-3.3.4/docs/dist/css/bootstrap-markdown.min.css">
+<script src="/common/bootstrap-3.3.4/docs/dist/js/bootstrap.js"></script>
+<script src="/common/bootstrap-3.3.4/docs/dist/js/markdown.min.js"></script>
+<script src="/common/bootstrap-3.3.4/docs/dist/js/bootstrap-markdown.js"></script>
+<script src="/common/bootstrap-3.3.4/docs/dist/js/bootstrap-markdown.zh.js"></script>
+<style type="text/css">
+	.btn-nav 
+	{
+		width:100px;
+	}
+	body{
+		background-color:#b0c4de;
+	}
+</style>
+
+
+</head>
+
+<body>
+	<div class="container">
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav navbar-nav navbar-right ">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">欢迎登录 {{.UserNameHTML}}<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<li><a href="/logout" >退出登录</a></li>
+					</ul>
+			</li>
+		</ul>
+	</div>
+
+	<div class="container">
+		<div  align="center" style="margin-top:10%">
+			<div class="btn-group">
+				<a href="/index" type="button" class="btn btn-primary btn-nav">首页</a>
+				<a href="/blogindex" type="button" class="btn btn-primary btn-nav">互联网</a>
+				<a href="/blogindex" type="button" class="btn btn-primary btn-nav">嵌入式</a>
+				<a href="/blogindex" type="button" class="btn btn-primary btn-nav">DIY</a>
+				<a href="/blogindex" type="button" class="btn btn-primary btn-nav">六爻</a>
+				<a href="/blogindex" type="button" class="btn btn-primary btn-nav">紫微斗数</a>
+				<a href="/aboutme/" type="button" class="btn btn-primary btn-nav">关于我</a>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="row"  method="post" action="/blog">
+			<div id="blog" class="col-sm-12 blog-main" >
+				<div class="blog-post" id="blog-post" ><!--以下为博客内容 每个hr为一个节点-->
+				</div>
+			</div><!-- /.blogzone -->
+		</div><!-- /.row -->
+
+	</div>
+	<script>
+	$.get("/getblogs",function(data,status){
+		//以下开始解析并显示博客内容
+		var obj = JSON.parse(data);
+		if(obj == null)
+			return;
+		var BlogNum = obj.length;
+		for(var i = 0 ; i < BlogNum ; i++){
+			var blogid = obj[i].ID;
+			var authorid = obj[i].AuthorID;
+			var authorname = obj[i].AuthorName;
+			var date = obj[i].Date;
+			var title = obj[i].Title;
+			var content = obj[i].Content;
+			var keyword = obj[i].KeyWords;
+			var classify = obj[i].Classify;
+			var url = obj[i].BlogURL;
+			
+			var blog_top = $("<hr>");
+			var blog_title = $('<a id=' + blogid + ' href="'+ url+ '">'+title+'</a>')
+			var blog_info = $('<span class="blog-post-meta" style="align:left;color:grey">&nbsp;&nbsp;&nbsp;&nbsp;'+ authorname +'发表于' + date + '</span>')
+			var blog_britem = $('<br>')
+			//var blog_text = $('<p style="align:left;margin-left:10px;"> </p>').html(markdown.toHTML(content));
+			var blog_bottom = $('<br><br>');
+			//$("#blog-post").after(blog_top,blog_title, blog_info,blog_britem, blog_text,blog_bottom); 
+			$("#blog-post").after(blog_title, blog_info,blog_bottom); 
+		}
+
+	});
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Welcome to StackBang!!!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/common/jquery-2.1.4.js"></script>
+<link rel="stylesheet" href="/common/bootstrap-3.3.4/docs/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/common/bootstrap-3.3.4/docs/dist/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/common/bootstrap-3.3.4/docs/dist/css/bootstrap-markdown.min.css">
+<script src="/common/bootstrap-3.3.4/docs/dist/js/bootstrap.js"></script>
+<script src="/common/bootstrap-3.3.4/docs/dist/js/markdown.min.js"></script>
+<script src="/common/bootstrap-3.3.4/docs/dist/js/bootstrap-markdown.js"></script>
+<script src="/common/bootstrap-3.3.4/docs/dist/js/bootstrap-markdown.zh.js"></script>
+</head>
+
+<body >
+	<br><br>
+	<div class="container" style="text-align:right ">
+	常用链接：
+		<a class="btn btn-sm btn-link" href="http://www.csdn.com" target="_blank">CSDN</a>
+		<a class="btn btn-sm btn-link" href="http://www.36kr.com" target="_blank">36Kr</a>
+		<a class="btn btn-sm btn-link" href="https://github.com" target="_blank">github</a>
+		<a class="btn btn-sm btn-link" href="http://www.infoq.com/cn/" target="_blank">InfoQ</a>
+		<!--a class="btn btn-sm btn-link" href="/aboutme/" target="_blank">关于StackBang</a-->
+		<!--a class="btn btn-sm btn-link" href="login" target="_blank">登录本站</a-->
+		<!--a class="btn btn-sm btn-link" href="regist" target="_blank">注册账户</a-->
+	</div>
+
+	<br><br>
+	<div class="container" align="middle">
+		<img src="../img/stackbanglogo_s.jpg" style="width:40%" >
+	</div>
+	<div class="container">
+		<br><br><br>
+		<div class="row">
+			<script type="text/javascript">
+				var searchWeb = 0;
+				function onSearch(){
+					switch(searchWeb){
+						default:
+						case 0:
+							var baidu_url="http://www.baidu.com/s?wd=" + $('#search_data').val();
+							window.open(baidu_url);
+							break;
+						case 1:
+							var google_url="https://www.google.com.hk/search?q=" + $('#search_data').val();
+							window.open(google_url);
+							break;
+						case 2:
+							var bing_url="http://cn.bing.com/search?q=" + $('#search_data').val();
+							window.open(bing_url);
+							break;
+					}
+				}
+				function setBaidu(){
+					searchWeb = 0;
+					$('#search_tag').html("百&nbsp;&nbsp;度");
+				}
+				function setGoogle(){
+					searchWeb = 1;
+					$('#search_tag').html("谷&nbsp;&nbsp;歌");
+				}
+				function setBing(){
+					searchWeb = 2;
+					$('#search_tag').html("必&nbsp;&nbsp;应");
+				}
+			</script>
+			<div class="col-lg-6 col-md-offset-3">
+				<div class="input-group">
+					<input id="search_data" type="text" class="form-control" onkeydown="if(event.keyCode==13) onSearch();">
+					<div class="input-group-btn">
+						<button id="search_tag" type="button" class="btn btn-default" tabindex="-1" onclick="onSearch()">百&nbsp;&nbsp;度</button>
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1 " style="height:34px">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-left" role="menu">
+							<li><a href="#" onclick="setBaidu()">百&nbsp;&nbsp;度</a></li>
+							<li><a href="#" onclick="setGoogle()">谷&nbsp;&nbsp;歌</a></li>
+							<li><a href="#" onclick="setBing()">必&nbsp;&nbsp;应</a></li>
+						</ul>
+					</div>
+				</div><!-- /.input-group -->
+			</div>
+		</div>
+		<br>
+	</div>
+	<div class="container" style="margin-top:30px" align="middle">
+		<a href="http://blog.stackbang.com" type="button" class="btn btn-primary"  style="width:80px" target="_blank">技术博客</a>
+		<a href="http://ask.stackbang.com" type="button" class="btn btn-primary"  style="width:80px" target="_blank">技术论坛</a>
+		<a href="http://www.yezhaistory.com" type="button" class="btn btn-primary" style="width:80px" target="_blank">野斋故事</a>
+		<!--<a href="http://yixue.stackbang.com" type="button" class="btn btn-primary"  style="width:80px" target="_blank">易学研究</a>
+		<a href="http://stock.stackbang.com" type="button" class="btn btn-primary" style="width:80px" target="_blank">股票追踪</a>
+		<a href="http://iot.stackbang.com" type="button" class="btn btn-primary" style="width:80px" target="_blank">物联网</a>
+		<a href="http://books.stackbang.com" type="button" class="btn btn-primary" style="width:80px" target="_blank">好书推荐</a>
+		<a href="http://yhd.stackbang.com" type="button" class="btn btn-primary" style="width:80px" target="_blank">有活动！</a>
+		-->
+	</div>
+	<br><br>
+
+	<footer class= "navbar-fixed-bottom">
+		<div style="text-align:center">
+			©2015 StackBang&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备15034897号-2</a>
+		</div>
+	</footer>
+</body>
+</html>
